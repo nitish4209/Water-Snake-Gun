@@ -1,43 +1,40 @@
 # Creating a snake, water & gun game using a python
 
-import random
+import random as rm
 '''
 1 for snake
 -1 for water
 0 for gun
 '''
 
-computer = random.choice([1, 0, -1])
-
+computer = rm.choice([1, 0, -1])
 
 youstr = input("Enter the choice:")
 youdict = {"s":1, "w":-1,"g":0}
 reversedict = {1:"snake", -1:"water", 0:"gun"}
 
-you = youdict[youstr]
-
-print(f"You choose: {reversedict[you]}\nComputer choose: {reversedict[computer]}")
-
-if(computer == you ):
-    print("It's Draw")
+# Input Validation
+if youstr not in youdict:
+    print("Invalid input! Please choose from s (snake), w (water), or g (gun).")
 else:
+    you = youdict[youstr]
 
-    if(computer == -1 and you == 1): # 0
-        print("You win!")
-        
-    elif(computer ==-1 and you == 0):
-        print("You loose!")
-        
-    elif(computer ==1 and you == -1):
-        print("You loose!")
-        
-    elif(computer ==1 and you == 0): #1
-        print("You win!")
+    print(f"You choose: {reversedict[you]}\nComputer choose: {reversedict[computer]}")
 
-    elif(computer ==0 and you == 1):
-        print("You loose!")
-        
-    elif(computer ==0 and you == -1):  # -1
-        print("You win!")
+    if(computer == you ):
+        print("It's Draw")
     else:
-        print("Somethin went wrong!")
+
+        if(computer == -1 and you == 1): 
+            print("You win!")       
+        
+        elif(computer ==1 and you == 0):
+            print("You win!")
+        
+            
+        elif(computer ==0 and you == -1): 
+            print("You win!")
+        else:
+            print("you loose!")
+            
+    
